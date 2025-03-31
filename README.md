@@ -23,7 +23,7 @@
     <canvas id="payoffChart"></canvas>
 
     <script>
-        let chart;
+        let chart = null; // Variabile per salvare il grafico
 
         function aggiornaGrafico() {
             const strike = parseFloat(document.getElementById("strikePrice").value);
@@ -51,7 +51,7 @@
             }
 
             if (chart) {
-                chart.destroy();
+                chart.destroy(); // Elimina il vecchio grafico per aggiornarlo
             }
 
             const ctx = document.getElementById('payoffChart').getContext('2d');
@@ -65,6 +65,8 @@
                     ]
                 },
                 options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
                         x: { title: { display: true, text: 'Prezzo del Sottostante' } },
                         y: { title: { display: true, text: 'Profitto / Perdita' } }
@@ -73,7 +75,7 @@
             });
         }
 
-        aggiornaGrafico();
+        aggiornaGrafico(); // Disegna il grafico iniziale
     </script>
 </body>
 </html>
